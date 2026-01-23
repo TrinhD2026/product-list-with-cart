@@ -2,6 +2,7 @@ import {useState} from 'react';
 import './App.css';
 import Product from './components/Product.jsx';
 import Cart from './components/Cart.jsx';
+import Confirmation from './components/Confirmation.jsx';
 
 const products=[
     {
@@ -11,6 +12,7 @@ const products=[
         price: 6.50,
         imgMobile: "/image-waffle-mobile.jpg",
         imgDesktop: "/image-waffle-desktop.jpg",
+        imgThumbnail: "/image-waffle-thumbnail.jpg",
         nums: 0,
     },
     {
@@ -20,6 +22,7 @@ const products=[
         price: 7,
         imgMobile: "/image-creme-brulee-mobile.jpg",
         imgDesktop: "/image-creme-brulee-desktop.jpg",
+        imgThumbnail: "/image-creme-brulee-thumbnail.jpg",
         nums: 0,
     },
     {
@@ -29,6 +32,7 @@ const products=[
         price: 8,
         imgMobile: "/image-macaron-mobile.jpg",
         imgDesktop: "/image-macaron-desktop.jpg",
+        imgThumbnail: "/image-macaron--thumbnail.jpg",
         nums: 0,
     },
     {
@@ -38,6 +42,7 @@ const products=[
         price: 5.50,
         imgMobile: "/image-tiramisu-mobile.jpg",
         imgDesktop: "/image-tiramisu-desktop.jpg",
+        imgThumbnail: "/image-tiramisu-thumbnail.jpg",
         nums: 0,
     },
     {
@@ -47,6 +52,7 @@ const products=[
         price: 4,
         imgMobile: "/image-baklava-mobile.jpg",
         imgDesktop: "/image-baklava-desktop.jpg",
+        imgThumbnail: "/image-baklava-thumbnail.jpg",
         nums: 0,
     },
     {
@@ -56,6 +62,7 @@ const products=[
         price: 5,
         imgMobile: "/image-meringue-mobile.jpg",
         imgDesktop: "/image-meringue-desktop.jpg",
+        imgThumbnail: "/image-meringue-thumbnail.jpg",
         nums: 0,
     },
     {
@@ -65,6 +72,7 @@ const products=[
         price: 4.50,
         imgMobile: "/image-cake-mobile.jpg",
         imgDesktop: "/image-cake-desktop.jpg",
+        imgThumbnail: "/image-cake-thumbnail.jpg",
         nums: 0,
     },
     {
@@ -74,6 +82,7 @@ const products=[
         price: 4.50,
         imgMobile: "/image-brownie-mobile.jpg",
         imgDesktop: "/image-brownie-desktop.jpg",
+        imgThumbnail: "/image-brownie-thumbnail.jpg",
         nums: 0,
     },
     {
@@ -83,6 +92,7 @@ const products=[
         price: 6.50,
         imgMobile: "/image-panna-cotta-mobile.jpg",
         imgDesktop: "/image-panna-cotta-desktop.jpg",
+        imgThumbnail: "/image-panna-cotta-thumbnail.jpg",
         nums: 0,
     },
 ];
@@ -90,6 +100,8 @@ const products=[
 function App() {
 
     const [selectedItems,setSelectedItems]=useState([]);
+
+    const [isConfirmed,setIsConfirmed]=useState(false);
 
     function handleAddItem(id) {
         const selected=products.find(p => p.id===id);
@@ -113,32 +125,46 @@ function App() {
         setSelectedItems(products.filter(product => product.nums>0));
     }
 
+    function startNewOrder() {
+        products.forEach(p => p.nums=0);
+        setSelectedItems([]);
+        setIsConfirmed(false);
+    }
+
     return (
         <>
             <h1>Desserts</h1>
-            <ul className="products">
-                {
-                    products.map((product) => {
-                        return (
-                            <li key={product.id}>
-                                <Product
-                                    id={product.id}
-                                    category={product.category}
-                                    name={product.name}
-                                    price={product.price}
-                                    imgMobile={product.imgMobile}
-                                    imgDesktop={product.imgDesktop}
-                                    nums={product.nums}
-                                    onAddBtnClick={handleAddItem}
-                                    onSubtractBtnClick={handleDecreaseQuantity} />
-                            </li>
-                        );
-                    })
-                }
-            </ul>
-            <Cart
-                selectedItems={selectedItems}
-                handleRemoveItem={removeItem} />
+            {
+                !isConfirmed&&
+                <>
+                    <ul className="products">
+                        {
+                            products.map((product) => {
+                                return (
+                                    <li key={product.id}>
+                                        <Product
+                                            id={product.id}
+                                            category={product.category}
+                                            name={product.name}
+                                            price={product.price}
+                                            imgMobile={product.imgMobile}
+                                            imgDesktop={product.imgDesktop}
+                                            nums={product.nums}
+                                            onAddBtnClick={handleAddItem}
+                                            onSubtractBtnClick={handleDecreaseQuantity} />
+                                    </li>
+                                );
+                            })
+                        }
+                    </ul>
+                    <Cart
+                        selectedItems={selectedItems}
+                        handleRemoveItem={removeItem}
+                        handleConfirm={() => setIsConfirmed(true)} />
+                </>
+            }
+            
+            {isConfirmed&&<Confirmation selectedItems={selectedItems} handleStartNewOrder={startNewOrder} />}
         </>
     )
 }

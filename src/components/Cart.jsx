@@ -1,7 +1,7 @@
 import React from 'react';
 import './Cart.css';
 
-function Cart({selectedItems, handleRemoveItem}) {
+function Cart({selectedItems, handleRemoveItem, handleConfirm}) {
 
     let totalItems=0;
     let sum=0;
@@ -47,7 +47,7 @@ function Cart({selectedItems, handleRemoveItem}) {
                         <img src='\icon-carbon-neutral.svg' alt="carbon neutral icon" />
                         <p>This is carbon-neutral delivery</p>
                     </div>
-                    <button className="confirm-btn">Confirm Order</button>
+                    <button className="confirm-btn" onClick={() => handleConfirm()}>Confirm Order</button>
                 </div>
                 </>
             }
