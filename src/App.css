@@ -1,0 +1,15 @@
+.main-container{
+    padding: 3rem;
+}
+
+.products {
+}
+
+.products li{
+    width: 100%;
+    margin-top: 2rem;
+}
+
+/*.products li .product{
+    width: 100%;
+}*/

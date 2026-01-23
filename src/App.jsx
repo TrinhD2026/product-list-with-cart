@@ -132,8 +132,8 @@ function App() {
     }
 
     return (
-        <>
-            <h1>Desserts</h1>
+        <div className="main-container">
+            <h1 className="header">Desserts</h1>
             {
                 !isConfirmed&&
                 <>
@@ -143,6 +143,7 @@ function App() {
                                 return (
                                     <li key={product.id}>
                                         <Product
+                                            className="product"
                                             id={product.id}
                                             category={product.category}
                                             name={product.name}
@@ -165,7 +166,7 @@ function App() {
             }
             
             {isConfirmed&&<Confirmation selectedItems={selectedItems} handleStartNewOrder={startNewOrder} />}
-        </>
+        </div>
     )
 }
 
