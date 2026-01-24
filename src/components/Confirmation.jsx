@@ -8,36 +8,40 @@ function Confirmation({selectedItems,handleStartNewOrder}) {
     });
 
     return (
-        <div className="confirmation">
-            <img src="\icon-order-confirmed.svg" alt="order confirmed icon"/>
-            <h2>Order confirmed</h2>
-            <div className="order-view">
-                <ul>
-                    <li>
+        <div className="confirmation-container">
+            <div className="confirmation-container--content" >
+                <img src="\icon-order-confirmed.svg" alt="order confirmed icon" />
+                <h2>Order confirmed</h2>
+                <p>Hope you enjoy your food</p>
+                <div>
+                    <ul className="items-container--confirmed">
                         {
                             selectedItems.map((product) => {
                                 return (
-                                    <li key={product.id} className="item-in-cart">
+                                    <li key={product.id}>
                                         <img src={product.imgThumbnail} />
-                                        <div className="selection-review">
-                                            <p>{product.name}</p>
-                                                <p className="quantity-review">{`${product.nums}x`}</p>
-                                                <p className="single-price-review">{`@ $${product.price}`}</p>
-                                                <p className="total-price-review">{`$${product.price*product.nums}`}</p>
+                                        <div>
+                                            <p className="product-name-confirmed">{product.name}</p>
+                                            <div>
+                                                <p className="quantity-confirmed">{`${product.nums}x`}</p>
+                                                <p className="single-price-confirmed">{`@ $${product.price.toFixed(2)}`}</p>
+                                            </div>
                                         </div>
+                                       
+                                        <p className="quantity-price-confirmed">{`$${(product.price*product.nums).toFixed(2)}`}</p>
                                     </li>
                                 );
                             })
                         }
-                    </li>
-                </ul>
-                <div className="confirm-order-total">
-                    <p>Order total</p>
-                    <p>{`$${sum}`}</p>
+                    </ul>
+                    <div className="total-container">
+                        <p>Order total</p>
+                        <p>{`$${sum.toFixed(2)}`}</p>
+                    </div>
                 </div>
-            </div>
 
-            <button className="confirm-btn" onClick={() => handleStartNewOrder()}>Start new order</button>
+                <button className="wide-btn confirm-btn" onClick={() => handleStartNewOrder()}>Start new order</button>
+            </div>
         </div>
 
     )

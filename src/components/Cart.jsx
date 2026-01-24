@@ -31,7 +31,7 @@ function Cart({selectedItems, handleRemoveItem, handleConfirm}) {
                                         <div className="quantity-price">
                                             <p className="quantity-review">{`${product.nums}x`}</p>
                                             <p className="single-price-review">{`@ $${product.price.toFixed(2)}`}</p>
-                                            <p className="total-price-review">{`$${(product.price*product.nums).toFixed(2)}`}</p>
+                                            <p className="quantity-price-review">{`$${(product.price*product.nums).toFixed(2)}`}</p>
                                         </div>
                                     </div>
 
