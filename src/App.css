@@ -1,9 +1,8 @@
 .main-container{
     padding: 2rem 3rem;
-    display: grid;
-    grid-template-columns: 1fr;
+    display: flex;
+    flex-direction: column;
     gap: 2rem;
-    background-color: blue;
 }
 
 .main-container h1{
@@ -20,29 +19,19 @@
     width: 100%;
 }
 
-@media screen and (width >= 961px){
+@media screen and (width >= 641px){
     .main-container{
         max-width: 80rem;
-        grid-template-columns: repeat(2, auto);
-        grid-auto-columns: auto;
+        flex-direction: row;
     }
 
     .main-container .products{
-        grid-template-columns: repeat(3, 1fr);
-        grid-column: 1 / 2;
-    }
-
-/*    .main-container{
         grid-template-columns: repeat(2, 1fr);
     }
+}
 
-    .main-container h1{
-        grid-column: 1;
-    }
-
+@media screen and (width >= 1025px){
     .main-container .products{
-        background-color:blue;
         grid-template-columns: repeat(3, 1fr);
-        grid-column: 1;
-    }*/
+    }
 }

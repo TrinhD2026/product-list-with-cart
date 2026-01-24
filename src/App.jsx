@@ -11,6 +11,7 @@ const products=[
         name: "Waffle with Berries",
         price: 6.50,
         imgMobile: "/image-waffle-mobile.jpg",
+        imgTablet: "/image-waffle-tablet.jpg",
         imgDesktop: "/image-waffle-desktop.jpg",
         imgThumbnail: "/image-waffle-thumbnail.jpg",
         nums: 0,
@@ -21,6 +22,7 @@ const products=[
         name: 'Vanilla Bean Cr\u00E8me Br\u00FBl\u00E9e',
         price: 7,
         imgMobile: "/image-creme-brulee-mobile.jpg",
+        imgTablet: "/image-creme-brulee-tablet.jpg",
         imgDesktop: "/image-creme-brulee-desktop.jpg",
         imgThumbnail: "/image-creme-brulee-thumbnail.jpg",
         nums: 0,
@@ -31,6 +33,7 @@ const products=[
         name: "Macaron Mix of Five",
         price: 8,
         imgMobile: "/image-macaron-mobile.jpg",
+        imgTablet: "/image-macaron-tablet.jpg",
         imgDesktop: "/image-macaron-desktop.jpg",
         imgThumbnail: "/image-macaron-thumbnail.jpg",
         nums: 0,
@@ -41,6 +44,7 @@ const products=[
         name: "Classic Tiramisu",
         price: 5.50,
         imgMobile: "/image-tiramisu-mobile.jpg",
+        imgTablet: "/image-tiramisu-tablet.jpg",
         imgDesktop: "/image-tiramisu-desktop.jpg",
         imgThumbnail: "/image-tiramisu-thumbnail.jpg",
         nums: 0,
@@ -51,6 +55,7 @@ const products=[
         name: "Pistachio Baklava",
         price: 4,
         imgMobile: "/image-baklava-mobile.jpg",
+        imgTablet: "/image-baklava-tablet.jpg",
         imgDesktop: "/image-baklava-desktop.jpg",
         imgThumbnail: "/image-baklava-thumbnail.jpg",
         nums: 0,
@@ -61,6 +66,7 @@ const products=[
         name: "Lemon Meringue Pie",
         price: 5,
         imgMobile: "/image-meringue-mobile.jpg",
+        imgTablet: "/image-meringue-tablet.jpg",
         imgDesktop: "/image-meringue-desktop.jpg",
         imgThumbnail: "/image-meringue-thumbnail.jpg",
         nums: 0,
@@ -71,6 +77,7 @@ const products=[
         name: "Red Velvet Cake",
         price: 4.50,
         imgMobile: "/image-cake-mobile.jpg",
+        imgTablet: "/image-cake-tablet.jpg",
         imgDesktop: "/image-cake-desktop.jpg",
         imgThumbnail: "/image-cake-thumbnail.jpg",
         nums: 0,
@@ -81,6 +88,7 @@ const products=[
         name: "Salted Caramel Brownie",
         price: 4.50,
         imgMobile: "/image-brownie-mobile.jpg",
+        imgTablet: "/image-brownie-tablet.jpg",
         imgDesktop: "/image-brownie-desktop.jpg",
         imgThumbnail: "/image-brownie-thumbnail.jpg",
         nums: 0,
@@ -91,6 +99,7 @@ const products=[
         name: "Vanilla Panna Cotta",
         price: 6.50,
         imgMobile: "/image-panna-cotta-mobile.jpg",
+        imgTablet: "/image-panna-cotta-tablet.jpg",
         imgDesktop: "/image-panna-cotta-desktop.jpg",
         imgThumbnail: "/image-panna-cotta-thumbnail.jpg",
         nums: 0,
@@ -133,33 +142,36 @@ function App() {
 
     return (
         <div className="main-container">
-            <h1>Desserts</h1>
-            <ul className="products">
-                {
-                    products.map((product) => {
-                        return (
-                            <li key={product.id}>
-                                <Product
-                                    id={product.id}
-                                    category={product.category}
-                                    name={product.name}
-                                    price={product.price}
-                                    imgMobile={product.imgMobile}
-                                    imgDesktop={product.imgDesktop}
-                                    nums={product.nums}
-                                    onAddBtnClick={handleAddItem}
-                                    onSubtractBtnClick={handleDecreaseQuantity} />
-                            </li>
-                        );
-                    })
-                }
-            </ul>
+            <div>
+                <h1>Desserts</h1>
+                <ul className="products">
+                    {
+                        products.map((product) => {
+                            return (
+                                <li key={product.id}>
+                                    <Product
+                                        id={product.id}
+                                        category={product.category}
+                                        name={product.name}
+                                        price={product.price}
+                                        imgMobile={product.imgMobile}
+                                        imgTablet={product.imgTablet}
+                                        imgDesktop={product.imgDesktop}
+                                        nums={product.nums}
+                                        onAddBtnClick={handleAddItem}
+                                        onSubtractBtnClick={handleDecreaseQuantity} />
+                                </li>
+                            );
+                        })
+                    }
+                </ul>
+            </div>
 
             <Cart
                 selectedItems={selectedItems}
                 handleRemoveItem={removeItem}
                 handleConfirm={() => setIsConfirmed(true)} />
-            
+
             {isConfirmed&&<Confirmation selectedItems={selectedItems} handleStartNewOrder={startNewOrder} />}
         </div>
     )

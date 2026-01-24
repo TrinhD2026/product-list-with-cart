@@ -1,11 +1,13 @@
 import React from 'react';
 import './Product.css';
 
-function Product({id, category, name, price, imgMobile, imgDesktop, nums, onAddBtnClick = null, onSubtractBtnClick = null}) {
+function Product({id, category, name, price, imgMobile, imgTablet, imgDesktop, nums, onAddBtnClick = null, onSubtractBtnClick = null}) {
     return (
         <div className="product-container">
             <picture>
-                <source srcset={imgDesktop} media="(min-width: 961px)" />
+                <source srcset={imgMobile} media="(max-width: 641px)" />
+                <source srcset={imgTablet} media="(max-width: 961px)" />
+                <source srcset={imgDesktop} media="(min-width: 1025px)" />
                 <img className="image-product" src={imgMobile} alt={name}
                     style={{border: nums > 0 ? '0.15rem solid var(--red)' : '0'}}
                 />

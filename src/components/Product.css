@@ -49,11 +49,20 @@
     color: var(--rose-50);
 }
 
-@media screen and (width >= 55rem){
+@media screen and (width >= 641px){
     .products-container{
         flex-direction: row;
     }
 
+    .add-item-btn{
+        width: 80%;
+    }
+    .update-quantity-container{
+        width: 80%;
+    }
+}
+
+@media screen and (width >= 1025px){
     .add-item-btn{
         width: 70%;
     }
