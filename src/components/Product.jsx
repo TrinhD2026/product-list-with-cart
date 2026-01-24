@@ -5,8 +5,8 @@ function Product({id, category, name, price, imgMobile, imgTablet, imgDesktop, n
     return (
         <div className="product-container">
             <picture>
-                <source srcset={imgMobile} media="(max-width: 641px)" />
-                <source srcset={imgTablet} media="(max-width: 961px)" />
+                <source srcset={imgMobile} media="(max-width: 801px)" />
+                <source srcset={imgTablet} media="(max-width: 1025px)" />
                 <source srcset={imgDesktop} media="(min-width: 1025px)" />
                 <img className="image-product" src={imgMobile} alt={name}
                     style={{border: nums > 0 ? '0.15rem solid var(--red)' : '0'}}

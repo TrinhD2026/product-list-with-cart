@@ -49,11 +49,12 @@
     color: var(--rose-50);
 }
 
-@media screen and (width >= 641px){
+@media screen and (width >= 801px){
     .products-container{
         flex-direction: row;
     }
-
+    .image-product{
+    }
     .add-item-btn{
         width: 80%;
     }
