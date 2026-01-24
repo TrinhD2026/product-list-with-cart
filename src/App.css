@@ -1,15 +1,48 @@
 .main-container{
-    padding: 3rem;
+    padding: 2rem 3rem;
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 2rem;
+    background-color: blue;
 }
 
-.products {
+.main-container h1{
+    font-size: 2.5rem;
+}
+
+.products{
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 2rem;
 }
 
 .products li{
     width: 100%;
-    margin-top: 2rem;
 }
 
-/*.products li .product{
-    width: 100%;
-}*/
+@media screen and (width >= 961px){
+    .main-container{
+        max-width: 80rem;
+        grid-template-columns: repeat(2, auto);
+        grid-auto-columns: auto;
+    }
+
+    .main-container .products{
+        grid-template-columns: repeat(3, 1fr);
+        grid-column: 1 / 2;
+    }
+
+/*    .main-container{
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .main-container h1{
+        grid-column: 1;
+    }
+
+    .main-container .products{
+        background-color:blue;
+        grid-template-columns: repeat(3, 1fr);
+        grid-column: 1;
+    }*/
+}

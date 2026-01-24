@@ -7,34 +7,22 @@
 }
 
 .image-product {
-    display: block;
-    max-inline-size: 100%;
     margin: 0 auto;
+    border-radius: 0.5rem;
 }
 
 .add-item-btn {
-    display: flex;
-    gap: 1rem;
-    justify-content: center;
-    align-items: center;
-    width: 40%;
-    height: 2.5rem;
-    border: 0.15rem solid var(--rose-500);
-    border-radius: 2rem;
     margin: 0 auto;
     transform: translateY(-50%);
-    color: var(--rose-900);
-    font-weight: 700;
-}
-
-.add-item-btn:hover, .add-item-btn:focus {
-    background-color: var(--rose-300);
-    outline: 0;
+    color: var(--rose-900);    
+    width: 40%;
 }
 
 .category{
+    margin-top: -1rem;
     color: var(--rose-400);
 }
+
 .name{
     color: var(--rose-900);
     font-weight: 700;
@@ -52,7 +40,7 @@
     justify-content: space-between;
     padding: 1rem;
     width: 40%;
-    height: 2.5rem;
+    height: 3rem;
     margin: 0 auto;
     transform: translateY(-50%);
     border-radius: 2rem;
@@ -61,19 +49,15 @@
     color: var(--rose-50);
 }
 
-.quantity-btn{
-    background-color: transparent;
-    width: 1.5rem;
-    height: 1.5rem;
-    border: 0.1rem solid var(--rose-50);
-    border-radius: 50%;
-    color: var(--rose-50);
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-    justify-content: center;
-}
+@media screen and (width >= 55rem){
+    .products-container{
+        flex-direction: row;
+    }
 
-.quantity-btn:hover, .quantity-btn:focus{
-    background-color: var(--rose-900);
+    .add-item-btn{
+        width: 70%;
+    }
+    .update-quantity-container{
+        width: 70%;
+    }
 }

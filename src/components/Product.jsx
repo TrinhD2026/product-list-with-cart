@@ -5,14 +5,14 @@ function Product({id, category, name, price, imgMobile, imgDesktop, nums, onAddB
     return (
         <div className="product-container">
             <picture>
-                <source srcset={imgDesktop} media="(min-width: 860px)" />
+                <source srcset={imgDesktop} media="(min-width: 961px)" />
                 <img className="image-product" src={imgMobile} alt={name}
                     style={{border: nums > 0 ? '0.15rem solid var(--red)' : '0'}}
                 />
             </picture>
             {
                 nums==0 &&
-                <button className="add-item-btn" type="button" onClick={() => onAddBtnClick(id)}>
+                <button className="wide-btn add-item-btn" type="button" onClick={() => onAddBtnClick(id)}>
                     <img src="/icon-add-to-cart.svg" alt="add to cart icon" className="add-to-cart-img" />
                     <p>Add to Cart</p>
                 </button>
@@ -20,11 +20,11 @@ function Product({id, category, name, price, imgMobile, imgDesktop, nums, onAddB
             {
                 nums>0&&
                 <div className="update-quantity-container">
-                    <button id="decrease-quantity-btn" className="quantity-btn" type="button" onClick={() => onSubtractBtnClick(id)}>
+                    <button id="decrease-quantity-btn" className="round-btn" type="button" onClick={() => onSubtractBtnClick(id)}>
                         <img src="/icon-decrement-quantity.svg" alt="decrease quantity icon" className="quantity-img" />
                     </button>
                     <p>{nums}</p>
-                        <button id="decrease-quantity-btn" className="quantity-btn" onClick={() => {
+                    <button id="decrease-quantity-btn" className="round-btn" onClick={() => {
                             onAddBtnClick(id);
                             this.blur();
                         }}>

@@ -11,47 +11,53 @@ function Cart({selectedItems, handleRemoveItem, handleConfirm}) {
     });
 
     return (
-        <>
+        <div className="cart-container">
             <h2>{`Your Cart (${totalItems})`}</h2>
-            {totalItems==0&&<img src="\illustration-empty-cart.svg" alt="empty cart icon" />}
+            {totalItems==0&&
+                <div className="empty-container">
+                <img src="\illustration-empty-cart.svg" alt="empty cart icon" />
+                <p>Your added items will appear here</p>
+                </div>
+            }
             {totalItems>0&&
                 <>
-                <ul className="cart-container">
-                    <li>
-                        {
-                            selectedItems.map((product) => {
-                                return (
-                                    <li key={product.id} className="item-in-cart">
-                                        <div className="selection-review">
-                                            <p>{product.name}</p>
-                                            <div className="quantity-price">
-                                                <p className="quantity-review">{`${product.nums}x`}</p>
-                                                <p className="single-price-review">{`@ $${product.price}`}</p>
-                                                <p className="total-price-review">{`$${product.price*product.nums}`}</p>
-                                            </div>
+                <ul className="items-container">
+                    {
+                        selectedItems.map((product) => {
+                            return (
+                                <li key={product.id} className="item-in-cart">
+                                    <div className="selection-review">
+                                        <p className="product-name-review">{product.name}</p>
+                                        <div className="quantity-price">
+                                            <p className="quantity-review">{`${product.nums}x`}</p>
+                                            <p className="single-price-review">{`@ $${product.price.toFixed(2)}`}</p>
+                                            <p className="total-price-review">{`$${(product.price*product.nums).toFixed(2)}`}</p>
                                         </div>
+                                    </div>
 
-                                        <button className="remove-item-btn" onClick={() => handleRemoveItem(product.id)}>
-                                            <img src="\icon-remove-item.svg" alt="remove item icon"/>
-                                        </button>
-                                    </li>
-                                );
-                            })
-                        }
-                    </li>
+                                    <button className="round-btn remove-item-btn" onClick={() => handleRemoveItem(product.id)}>
+                                        <img src="\icon-remove-item.svg" alt="remove item icon" />
+                                    </button>
+                                </li>
+                            );
+                        })
+                    }
                 </ul>
 
                 <div className="total-container">
-                    <p>{`Order total: $${sum}`}</p>
-                    <div>
-                        <img src='\icon-carbon-neutral.svg' alt="carbon neutral icon" />
-                        <p>This is carbon-neutral delivery</p>
-                    </div>
-                    <button className="confirm-btn" onClick={() => handleConfirm()}>Confirm Order</button>
+                    <p>Order total</p>
+                    <p>{`$${sum.toFixed(2)}`}</p>
                 </div>
+
+                <div className="delivery-container">
+                    <img src='\icon-carbon-neutral.svg' alt="carbon neutral icon" />
+                    <p>This is <strong>carbon-neutral</strong> delivery</p>
+                </div>
+
+                <button className="wide-btn confirm-btn" onClick={() => handleConfirm()}>Confirm Order</button>
                 </>
             }
-        </>
+        </div>
         
     )
 }

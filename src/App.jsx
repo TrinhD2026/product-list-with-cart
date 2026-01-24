@@ -32,7 +32,7 @@ const products=[
         price: 8,
         imgMobile: "/image-macaron-mobile.jpg",
         imgDesktop: "/image-macaron-desktop.jpg",
-        imgThumbnail: "/image-macaron--thumbnail.jpg",
+        imgThumbnail: "/image-macaron-thumbnail.jpg",
         nums: 0,
     },
     {
@@ -133,37 +133,32 @@ function App() {
 
     return (
         <div className="main-container">
-            <h1 className="header">Desserts</h1>
-            {
-                !isConfirmed&&
-                <>
-                    <ul className="products">
-                        {
-                            products.map((product) => {
-                                return (
-                                    <li key={product.id}>
-                                        <Product
-                                            className="product"
-                                            id={product.id}
-                                            category={product.category}
-                                            name={product.name}
-                                            price={product.price}
-                                            imgMobile={product.imgMobile}
-                                            imgDesktop={product.imgDesktop}
-                                            nums={product.nums}
-                                            onAddBtnClick={handleAddItem}
-                                            onSubtractBtnClick={handleDecreaseQuantity} />
-                                    </li>
-                                );
-                            })
-                        }
-                    </ul>
-                    <Cart
-                        selectedItems={selectedItems}
-                        handleRemoveItem={removeItem}
-                        handleConfirm={() => setIsConfirmed(true)} />
-                </>
-            }
+            <h1>Desserts</h1>
+            <ul className="products">
+                {
+                    products.map((product) => {
+                        return (
+                            <li key={product.id}>
+                                <Product
+                                    id={product.id}
+                                    category={product.category}
+                                    name={product.name}
+                                    price={product.price}
+                                    imgMobile={product.imgMobile}
+                                    imgDesktop={product.imgDesktop}
+                                    nums={product.nums}
+                                    onAddBtnClick={handleAddItem}
+                                    onSubtractBtnClick={handleDecreaseQuantity} />
+                            </li>
+                        );
+                    })
+                }
+            </ul>
+
+            <Cart
+                selectedItems={selectedItems}
+                handleRemoveItem={removeItem}
+                handleConfirm={() => setIsConfirmed(true)} />
             
             {isConfirmed&&<Confirmation selectedItems={selectedItems} handleStartNewOrder={startNewOrder} />}
         </div>
