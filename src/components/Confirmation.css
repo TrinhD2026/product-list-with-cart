@@ -19,6 +19,19 @@
     padding: 2rem;
 }
 
+.confirmation-container--content > *{
+    margin-bottom: 2rem;
+}
+
+.confirmation-container--content > *:last-child{
+    margin-bottom: 0;
+}
+
+.confirmation-container--content > p{
+    margin-top: -1.5rem;
+    color: var(--rose-500);
+
+}
 .confirmation-container--content > div{
     background-color: var(--rose-100);
     padding: 1rem;
@@ -70,4 +83,15 @@
 .quantity-price-confirmed{
     color: var(--rose-900);
     font-weight: 600;
+}
+
+@media screen and (width >= 801px){
+    .confirmation-container{
+        align-items: center;
+        justify-content: center;
+    }
+    .confirmation-container--content{
+        max-width: 40rem;
+        border-radius: 1rem;
+    }
 }
