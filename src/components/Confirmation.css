@@ -11,7 +11,7 @@
     justify-content: flex-end;
 }
 
-.confirmation-container--content{
+.confirmation-container__content{
     width: 100%;
     background-color: var(--rose-50);
     margin: 0 auto;
@@ -19,28 +19,30 @@
     padding: 2rem;
 }
 
-.confirmation-container--content > *{
+.confirmation-container__content > *{
     margin-bottom: 2rem;
 }
 
-.confirmation-container--content > *:last-child{
+.confirmation-container__content > *:last-child{
     margin-bottom: 0;
 }
 
-.confirmation-container--content > p{
+.confirmation-container__content > p{
     margin-top: -1.5rem;
     color: var(--rose-500);
 
 }
-.confirmation-container--content > div{
+.confirmation-container__content > div{
     background-color: var(--rose-100);
     padding: 1rem;
     border-radius: 0.5rem;
 }
-.items-container--confirmed{
+.items-container__confirmed{
+    max-height: 20rem;
+    overflow-y: scroll;
 }
 
-.items-container--confirmed li{
+.items-container__confirmed li{
     display: flex;
     flex-direction: row;
     justify-content: space-between;
@@ -49,17 +51,17 @@
     padding: 1rem 0;
 }
 
-.items-container--confirmed li img{
+.items-container__confirmed li img{
     max-height: 4rem;
     max-width: 4rem;
     border-radius: 0.5rem;
 }
 
-.items-container--confirmed li > div{
+.items-container__confirmed li > div{
     margin-left: -5rem;
 }
 
-.items-container--confirmed li > div > div{
+.items-container__confirmed li > div > div{
     display: flex;
     flex-direction: row;
     gap: 0.5rem;
@@ -90,7 +92,7 @@
         align-items: center;
         justify-content: center;
     }
-    .confirmation-container--content{
+    .confirmation-container__content{
         max-width: 40rem;
         border-radius: 1rem;
     }

@@ -20,6 +20,11 @@
     width: 100%;
 }
 
+.hide-overflow {
+    max-height: 100vh;
+    overflow: hidden;
+}
+
 @media screen and (width >= 801px){
     .main-container{
         max-width: 80rem;

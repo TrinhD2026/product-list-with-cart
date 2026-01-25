@@ -111,6 +111,7 @@ function App() {
     const [selectedItems,setSelectedItems]=useState([]);
 
     const [isConfirmed,setIsConfirmed]=useState(false);
+    const [mainCLass,setMainClass]=useState("main-container");
 
     function handleAddItem(id) {
         const selected=products.find(p => p.id===id);
@@ -134,17 +135,24 @@ function App() {
         setSelectedItems(products.filter(product => product.nums>0));
     }
 
+    function confirmOrder() {
+        setIsConfirmed(true);
+        //hide overflow when confirmed modal open to disable scrolling
+        setMainClass("main-container hide-overflow");
+    }
+
     function startNewOrder() {
         products.forEach(p => p.nums=0);
         setSelectedItems([]);
         setIsConfirmed(false);
+        setMainClass("main-container");
     }
 
     return (
-        <div className="main-container">
+        <div className={mainCLass}>
             <div>
                 <h1>Desserts</h1>
-                <ul className="products">
+                <ul className="products" >
                     {
                         products.map((product) => {
                             return (
@@ -170,9 +178,9 @@ function App() {
             <Cart
                 selectedItems={selectedItems}
                 handleRemoveItem={removeItem}
-                handleConfirm={() => setIsConfirmed(true)} />
+                handleConfirm={confirmOrder} />
 
-            {isConfirmed&&<Confirmation selectedItems={selectedItems} handleStartNewOrder={startNewOrder} />}
+            <Confirmation selectedItems={selectedItems} isOpen={isConfirmed} setIsOpen={startNewOrder} />
         </div>
     )
 }

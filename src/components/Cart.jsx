@@ -1,14 +1,20 @@
 import React from 'react';
+import {useRef} from 'react';
 import './Cart.css';
 
 function Cart({selectedItems, handleRemoveItem, handleConfirm}) {
-
+    const buttonRef=useRef(null);
     let totalItems=0;
     let sum=0;
     selectedItems.forEach(p => {
         sum+=p.nums*p.price;
         totalItems+=p.nums;
     });
+
+    function handleConfirmClick(){
+        handleConfirm();
+        buttonRef.current.blur();
+    }
 
     return (
         <div className="cart-container">
@@ -54,7 +60,7 @@ function Cart({selectedItems, handleRemoveItem, handleConfirm}) {
                     <p>This is <strong>carbon-neutral</strong> delivery</p>
                 </div>
 
-                <button className="wide-btn confirm-btn" onClick={() => handleConfirm()}>Confirm Order</button>
+                <button className="wide-btn confirm-btn" ref={buttonRef} onClick={() => handleConfirmClick()}>Confirm Order</button>
                 </>
             }
         </div>
