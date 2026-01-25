@@ -1,7 +1,10 @@
 import React from 'react';
+import {useRef} from 'react';
 import './Product.css';
 
-function Product({id, category, name, price, imgMobile, imgTablet, imgDesktop, nums, onAddBtnClick = null, onSubtractBtnClick = null}) {
+function Product({id,category,name,price,imgMobile,imgTablet,imgDesktop,nums,onAddBtnClick=null,onSubtractBtnClick=null}) {
+    const increaseQuantityBtn=useRef(null);
+    const decreaseQuantityBtn=useRef(null);
     return (
         <div className="product-container">
             <picture>
@@ -22,13 +25,16 @@ function Product({id, category, name, price, imgMobile, imgTablet, imgDesktop, n
             {
                 nums>0&&
                 <div className="update-quantity-container">
-                    <button id="decrease-quantity-btn" className="round-btn" type="button" onClick={() => onSubtractBtnClick(id)}>
+                        <button ref={decreaseQuantityBtn} id="decrease-quantity-btn" className="round-btn" type="button" onClick={() => {
+                            onSubtractBtnClick(id);
+                            decreaseQuantityBtn.current.blur();
+                        }}>
                         <img src="/icon-decrement-quantity.svg" alt="decrease quantity icon" className="quantity-img" />
                     </button>
                     <p>{nums}</p>
-                    <button id="decrease-quantity-btn" className="round-btn" onClick={() => {
+                    <button ref={increaseQuantityBtn} id="decrease-quantity-btn" className="round-btn" onClick={() => {
                             onAddBtnClick(id);
-                            this.blur();
+                            increaseQuantityBtn.current.blur();
                         }}>
                         <img src="/icon-increment-quantity.svg" alt="increase quantity icon" className="quantity-img" />
                     </button>
