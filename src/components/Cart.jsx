@@ -19,7 +19,7 @@ function Cart({selectedItems, handleRemoveItem, handleConfirm}) {
     return (
         <div className="cart-container">
             <h2>{`Your Cart (${totalItems})`}</h2>
-            {totalItems==0&&
+            {totalItems===0&&
                 <div className="empty-container">
                 <img src="\illustration-empty-cart.svg" alt="empty cart icon" />
                 <p>Your added items will appear here</p>

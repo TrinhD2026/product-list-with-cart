@@ -16,7 +16,7 @@ function Product({id, category, name, price, imgMobile, imgTablet, imgDesktop, n
                 nums==0 &&
                 <button className="wide-btn add-item-btn" type="button" onClick={() => onAddBtnClick(id)}>
                     <img src="/icon-add-to-cart.svg" alt="add to cart icon" className="add-to-cart-img" />
-                    <p>Add to Cart</p>
+                    Add to Cart
                 </button>
              }
             {
