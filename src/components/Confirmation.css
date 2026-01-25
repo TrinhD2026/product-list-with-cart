@@ -39,7 +39,7 @@
 }
 .items-container__confirmed{
     max-height: 20rem;
-    overflow-y: scroll;
+    overflow-y: auto;
 }
 
 .items-container__confirmed li{
